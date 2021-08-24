@@ -1,6 +1,7 @@
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
+//Gives us a reference to the character options
 const lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
 const uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numericCharacters = "0123456789";
@@ -23,10 +24,15 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
  const passwordLength = passwordLengthCheck();
  const passwordCharacters = acceptableChracters();
- 
- 
+ let password = "";
 
- return true;
+  //for loop to add characters to password
+  for(let i = 0; i < passwordLength; i++){
+
+      //selects character out of passwordCharacters array and adds it to password
+      password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+  }
+ return password;
 }
 
 // Adds prompt to ask length of password and checks to see if it matches 8 - 128
@@ -71,7 +77,7 @@ function acceptableChracters () {
 
     // if special is allowed then we will add specialCharacters to charcters string
     if (special) {
-      characters = characters + specialCharacters;
+      characters += specialCharacters;
     }
   }else{
 
