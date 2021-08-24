@@ -5,7 +5,7 @@ let generateBtn = document.querySelector("#generate");
 const lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
 const uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numericCharacters = "0123456789";
-const specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+const specialCharacters = "";
 
 
 // Write password to the #password input
@@ -29,7 +29,7 @@ function generatePassword() {
   //for loop to add characters to password
   for(let i = 0; i < passwordLength; i++){
 
-      //selects character out of passwordCharacters array and adds it to password
+      //
       password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
   }
  return password;
