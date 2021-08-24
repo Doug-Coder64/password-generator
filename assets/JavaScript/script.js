@@ -1,11 +1,16 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
+
+const lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numericCharacters = "0123456789";
+const specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
@@ -17,13 +22,9 @@ generateBtn.addEventListener("click", writePassword);
 //Generates password after other functions collect password criteria
 function generatePassword() {
  const passwordLength = passwordLengthCheck();
- console.log(passwordLength);
-
- const characters = acceptableChracters();
- console.log(characters[0]);
- console.log(characters[1]);
- console.log(characters[2]);
- console.log(characters[3]);
+ const passwordCharacters = acceptableChracters();
+ 
+ 
 
  return true;
 }
@@ -41,13 +42,44 @@ function passwordLengthCheck() {
   }
 }
 
-// Adds prompt to ask what characters can be used
+// Adds prompt to ask what characters can be used and returns acceptable chracters
 function acceptableChracters () {
   const lowercase = window.confirm("Do you want password to have lowercase?");
   const uppercase = window.confirm("Do you want password to have uppercase?");
   const numeric = window.confirm("Do you want password to have numerics?");
   const special = window.confirm("Do you want password to have special characters");
-  
-  return [lowercase,uppercase, numeric, special]; //returns an array with true and false values depending on what was selected for each question.
-}
 
+  let characters = "";
+
+  // if or statement that checks to see if at least 1 character option is selected
+  if (lowercase || uppercase || numeric || special) {
+
+    // if lowercase is allowed then we will add lowercaseCharacters to charcters string
+    if (lowercase) {
+      characters = characters + lowercaseCharacters;
+    }
+
+    // if uppercase is allowed then we will add uppercaseCharacters to charcters string
+    if (uppercase) {
+      characters = characters + uppercaseCharacters;
+    }
+
+    // if numeric is allowed then we will add numericCharacters to charcters string
+    if (numeric) {
+      characters = characters + numericCharacters;
+    }
+
+    // if special is allowed then we will add specialCharacters to charcters string
+    if (special) {
+      characters = characters + specialCharacters;
+    }
+  }else{
+
+    // if no charater set is selected then alert will be prompted and acceptableCharacter() will be re reran to confirm what characters to use.
+    window.alert("Please select at least one character option");
+    return acceptableChracters();
+  }
+
+  // reurns characters string with all characters the user allows
+  return (characters);
+}
