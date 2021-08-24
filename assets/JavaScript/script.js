@@ -18,6 +18,13 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
  const passwordLength = passwordLengthCheck();
  console.log(passwordLength);
+
+ const characters = acceptableChracters();
+ console.log(characters[0]);
+ console.log(characters[1]);
+ console.log(characters[2]);
+ console.log(characters[3]);
+
  return true;
 }
 
@@ -25,11 +32,22 @@ function generatePassword() {
 function passwordLengthCheck() {
  const length = parseInt(window.prompt("Please Enter Desired Password Length"));
  
-  if (length >= 8 && length <= 128) {
+  //this recursive if statement checks to see if it matches 8 - 128, if not it reruns function by returning passwordLengthCheck()
+  if (length >= 8 && length <= 128) { 
     return length;
   }else {
     window.alert("Password Length is invalid, please try again.");
-    return passwordLengthCheck();
+    return passwordLengthCheck();   
   }
+}
+
+// Adds prompt to ask what characters can be used
+function acceptableChracters () {
+  const lowercase = window.confirm("Do you want password to have lowercase?");
+  const uppercase = window.confirm("Do you want password to have uppercase?");
+  const numeric = window.confirm("Do you want password to have numerics?");
+  const special = window.confirm("Do you want password to have special characters");
+  
+  return [lowercase,uppercase, numeric, special]; //returns an array with true and false values depending on what was selected for each question.
 }
 
