@@ -40,3 +40,6 @@ Once the user has gone through all the prompts `generatePassword()` runs a for l
 Below is a password that has a 25 length and uses all 4 character options
 
 ![Generated password](/assets/readme-images/example.png)
+
+## Test out the demo!
+https://doug-coder64.github.io/password-generator/
