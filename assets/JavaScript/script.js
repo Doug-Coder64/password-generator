@@ -7,7 +7,6 @@ const uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numericCharacters = "0123456789";
 const specialCharacters = "";
 
-
 // Write password to the #password input
 function writePassword() {
   const password = generatePassword();
